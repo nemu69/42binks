@@ -9,16 +9,15 @@ _ft_list_sort:
 	cmp	rdi, 0										; second param is null exit
 	je 	.exit
 	mov r12, rsi
-	mov	r13, rdi
+	mov	r13, [rdi]
 	xor r14, r14
 	mov r15, 8
-	jmp .cmp
+	jmp .swap
 
 .cmp:
 	mov rcx, qword [r13 + r14] 						; current
-	mov rdi, qword [rcx] 							; current
 	mov rcx, qword [r13 + r15] 						; next
-	mov rsi, qword [rcx] 							; current
+	mov rsi, qword [rcx] 							; content next
 
 	cmp	rsi, 0										; list sorted
 	je 	.exit
@@ -33,13 +32,13 @@ _ft_list_sort:
 
 
 .swap:
-	mov rbx, qword [r13 + r14] 						; tmp = current
+	mov rax, qword [r13 + r14] 						; tmp = current
 	mov rsi, qword [r13 + r14]
 	mov rsi, [r13 + r15]							; current = next
 	mov qword [r13 + r15], rbx						; next = current
 	xor r14, r14
 	mov r15, 8
-	jmp .cmp										; start over
+	;jmp .cmp										; start over
 
 .exit:
 	ret

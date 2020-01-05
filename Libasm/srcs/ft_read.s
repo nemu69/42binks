@@ -3,12 +3,10 @@ global _ft_read
 section .text
 
 _ft_read:
-    cmp di , -1
-    je  .neg
-    cmp dx , -1
-    je  .neg
     mov     rax, 0x2000003
     syscall
+    cmp rdx, 0
+    jne .neg
 
 .exit:
     ret

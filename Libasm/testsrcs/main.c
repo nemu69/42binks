@@ -6,7 +6,7 @@
 /*   By: nepage-l <nepage-l@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/15 01:58:15 by jdesbord     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/05 20:45:32 by nepage-l    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/05 22:57:09 by nepage-l    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,12 +37,12 @@ int		main(void)
 	ft_list_push_front(&lst, str3);
 	str3 = ft_strdup("str2");
 	ft_list_push_front(&lst, str2);
-	dprintf(1, "LIST NON SORT\n");
+	dprintf(1, "!!!! LIST NON SORT !!!!\n");
 	dprintf(1, "1m%s\n",lst->data);
 	dprintf(1, "2m%s\n",lst->next->data);
 	dprintf(1, "2m%s\n",lst->next->next->data);
 	ft_list_sort(&lst, ft_strcmp);
-	dprintf(1, "LIST SORT");
+	dprintf(1, "!!! LIST SORT !!!\n");
 	dprintf(1, "1m%s\n",lst->data);
 	dprintf(1, "2m%s\n",lst->next->data);
 	dprintf(1, "2m%s\n",lst->next->next->data);
@@ -52,7 +52,7 @@ int		main(void)
 	dprintf(1, "RET write = |%d|\n", i = write(fdwrite, "THIS IS BANANAS\n", 16));
 	dprintf(1, "RET write = |%d|\n", i = write(1, "THIS IS BANANAS\n", 16));
 	dprintf(1, "!!!!!   READ    !!!!!\n");
-	dprintf(1, "RET read = |%d|\n", i = ft_read(fdread, str, 20));
+	dprintf(1, "RET read = |%d|\n", i = ft_read(fdread, str, -1));
 	str[i] = '\0';
 	dprintf(1, "str is |%s|\n", str);
 	dprintf(1, "!!!!!  STRLEN   !!!!!\n");
