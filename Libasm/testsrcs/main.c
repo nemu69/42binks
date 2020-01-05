@@ -6,7 +6,7 @@
 /*   By: nepage-l <nepage-l@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/15 01:58:15 by jdesbord     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/05 17:08:28 by nepage-l    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/05 20:45:32 by nepage-l    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,11 +19,11 @@ int		main(void)
 	char	*str2;
 	char	*str4;
 	char	*str5;
-	//t_list	*lst;
-	char *str3;
-	int i;
-	int fdread = open("testsrcs/lol", O_RDONLY);
-	int fdwrite = open("testsrcs/lol", O_WRONLY);
+	t_list	*lst;
+	char 	*str3;
+	int 	i;
+	int 	fdread = open("testsrcs/lol", O_RDONLY);
+	int 	fdwrite = open("testsrcs/lol", O_WRONLY);
 
 	str4 = ft_strdup("str");
 	str5 = strdup("banana\n");
@@ -32,16 +32,25 @@ int		main(void)
 	str3 = ft_strdup("str");
 	str2 = ft_strdup("banana\n");
 	str = malloc(sizeof(char) * 21);
-	//ft_list_push_front(&lst, (void *)str3);
-//	dprintf(1, "%s\n",lst->data);
-//	dprintf(1, "%p\n",lst);
+	
+	lst = ft_create_elem("hey");
+	ft_list_push_front(&lst, str3);
 	str3 = ft_strdup("str2");
-//	ft_list_push_front(&lst, (void *)str3);
-//	dprintf(1, "%s\n",lst->data);
+	ft_list_push_front(&lst, str2);
+	dprintf(1, "LIST NON SORT\n");
+	dprintf(1, "1m%s\n",lst->data);
+	dprintf(1, "2m%s\n",lst->next->data);
+	dprintf(1, "2m%s\n",lst->next->next->data);
+	ft_list_sort(&lst, ft_strcmp);
+	dprintf(1, "LIST SORT");
+	dprintf(1, "1m%s\n",lst->data);
+	dprintf(1, "2m%s\n",lst->next->data);
+	dprintf(1, "2m%s\n",lst->next->next->data);
 //	dprintf(1, "%p\n",lst);
 	//dprintf(1, "number of maillon = %d\n", ft_list_size(lst));
 	dprintf(1, "!!!!!   WRITE   !!!!!\n");
 	dprintf(1, "RET write = |%d|\n", i = write(fdwrite, "THIS IS BANANAS\n", 16));
+	dprintf(1, "RET write = |%d|\n", i = write(1, "THIS IS BANANAS\n", 16));
 	dprintf(1, "!!!!!   READ    !!!!!\n");
 	dprintf(1, "RET read = |%d|\n", i = ft_read(fdread, str, 20));
 	str[i] = '\0';
@@ -55,6 +64,7 @@ int		main(void)
 	dprintf(1, "address of str duplicate = %p\n", str2 = ft_strdup(str));
 	dprintf(1, "str = %sstr2 = %s", str, str2);
 	printf("!!!!! ATOI_BASE !!!!!\n");
+	printf("%d\n", ft_atoi_base("-0", "0123456789"));
 	printf("%d\n", ft_atoi_base("-48", "0123456789"));
 	printf("%d\n", ft_atoi_base(" -+--2147448", "0123456789"));
 	printf("%d\n", ft_atoi_base("    ++---222", "012"));
