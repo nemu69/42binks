@@ -1,44 +1,71 @@
-
-global _ft_list_sort
-
 section .text
-
+    global _ft_list_sort
+	extern _ft_cmp
 _ft_list_sort:
-	cmp	rsi, 0										; first param is null exit
-	je 	.exit
-	cmp	rdi, 0										; second param is null exit
-	je 	.exit
-	mov r12, rsi
-	mov	r13, [rdi]
-	xor r14, r14
-	mov r15, 8
-	jmp .swap
+    cmp     rdi,	0
+	je		.return
+    push    rbp
+    mov     r12,	rdi
+    mov	    r13,	rsi
+	mov	    rcx,    r12
 
-.cmp:
-	mov rcx, qword [r13 + r14] 						; current
-	mov rcx, qword [r13 + r15] 						; next
-	mov rsi, qword [rcx] 							; content next
+.Loop1:
+    cmp     r12,	0
+    je      .return
+	mov	    rcx,    qword	[r12]
+    mov     rdi,	qword	[rcx]
+	mov		r14,	qword	[r12]
+	mov		r14,	qword	[r14 + 8]
+	mov		rsi,	qword	[r14]
+	call	r13
+	cmp		ax,	0
+	jle		.setupLoop2						;if in order go to loop 2
 
-	cmp	rsi, 0										; list sorted
-	je 	.exit
+	mov	    rcx,    r12						;rcx = pointer to list
+	mov     rdi,	qword	[rcx]			;rdi = list
+											;have to link highest to next of lowest
+	mov	    rcx,    r12						;rcx = pointer to list
+	mov		r14,	qword	[rcx]			;r14 = list
+	mov		r14,	qword	[r14 + 8]		;r14 = next of list
+	mov		r15,	qword	[r14 + 8]		;r15 = next of lowest
+	mov		qword	[rdi + 8],	r15			;next of rdi = r15
+	mov		rcx,	qword	[rcx]			;rcx = list
+	mov		qword	[r14 + 8], rcx			;next of r14 = start of list list
+	mov		qword	[r12],	r14				;link pointer to new beginning at r14
 
-	call r12										; function compare
-	cmp rax, 0
-	jg	.swap										; bubble sort if op1 > op2
+.setupLoop2:
+	mov	    rbx,    r12						;rbx = pointer to list
+	mov		rbx,	qword	[rbx]			;rbx = list
+	mov		r15,	rbx
+	mov		rbx,	qword	[rbx + 8]		;rbx = next of list
+	mov     rdi,	qword	[rbx]			;rdi = value of rbx
+	mov		r14,	qword	[rbx + 8]		;r14 = next of rbx
+	cmp		r14,	0
+	je		.return
+	mov		rsi,	qword	[r14]			;rsi = value of r14
 
-	add r14, 8										; next
-	add r15, 8										; next
-	jmp .cmp
+.Loop2:
+	call	r13
+	cmp		ax,	0
+	jle		.next
+											;Swap and restart
+	mov		qword	[r15 + 8],	r14
+	mov		r15,	qword [r14 + 8]
+	mov		qword	[rbx + 8],	r15
+	mov		qword	[r14 + 8],	rbx
 
+	;jmp			.return
+	jmp			.Loop1
 
-.swap:
-	mov rax, qword [r13 + r14] 						; tmp = current
-	mov rsi, qword [r13 + r14]
-	mov rsi, [r13 + r15]							; current = next
-	mov qword [r13 + r15], rbx						; next = current
-	xor r14, r14
-	mov r15, 8
-	;jmp .cmp										; start over
-
-.exit:
-	ret
+.next:
+	mov		r15,	qword[r15 + 8]
+	mov		rbx,	r14
+	mov		rdi,	qword	[r14]
+	mov		r14,	qword	[r14 + 8]
+	cmp		r14,	0
+	je		.return
+	mov		rsi,	qword	[r14]
+	jmp		.Loop2
+.return:
+	pop		rbp
+    ret
