@@ -4,15 +4,16 @@ extern  _ft_strlen, _malloc, _ft_strcpy
 section .text
 
 _ft_strdup:
+	push r12
 	mov	r12, rdi
 	call _ft_strlen
 	mov	rdi, rax
-	inc	rdi 		; strlen + '\0'
+	inc	rdi
 	push rax
 	
 	call _malloc
 	cmp rax, 0
-	je .exit
+	je exit
 
 	mov rdi, rax
 	mov rsi, r12
@@ -20,5 +21,6 @@ _ft_strdup:
 
 	call _ft_strcpy
 
-.exit:
+exit:
+	pop r12
 	ret

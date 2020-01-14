@@ -5,66 +5,144 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nepage-l <nepage-l@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/15 01:58:15 by jdesbord     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/05 22:57:09 by nepage-l    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/01/09 04:29:09 by nepage-l     #+#   ##    ##    #+#       */
+/*   Updated: 2020/01/14 21:51:58 by nepage-l    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "main.h"
 
+void	balec(void	*viteeff)
+{
+	if (viteeff)
+		free (viteeff);
+}
+
+int		balec2(char *s1, char *s2)
+{
+	return(0);
+}
+
 int		main(void)
 {
-	char	*str;
-	char	*str2;
-	char	*str4;
-	char	*str5;
-	t_list	*lst;
-	char 	*str3;
-	int 	i;
-	int 	fdread = open("testsrcs/lol", O_RDONLY);
-	int 	fdwrite = open("testsrcs/lol", O_WRONLY);
-
-	str4 = ft_strdup("str");
-	str5 = strdup("banana\n");
-	ft_strcpy(str5, str4);
-	dprintf(1, "STRCPY = %s\n", str5);
-	str3 = ft_strdup("str");
-	str2 = ft_strdup("banana\n");
-	str = malloc(sizeof(char) * 21);
+	// char	*str;
+	// char	*str2;
+	// char	*str4;
+	// char	*str5;
+	// t_list	*lst;
+	// char 	*str3;
+	// int 	i;
+	// int 	fdread = open("testsrcs/lol", O_RDONLY);
+	// int 	fdwrite = open("testsrcs/lol", O_WRONLY);
+	// t_list	*temp;
 	
-	lst = ft_create_elem("hey");
-	ft_list_push_front(&lst, str3);
-	str3 = ft_strdup("str2");
-	ft_list_push_front(&lst, str2);
-	dprintf(1, "!!!! LIST NON SORT !!!!\n");
-	dprintf(1, "1m%s\n",lst->data);
-	dprintf(1, "2m%s\n",lst->next->data);
-	dprintf(1, "2m%s\n",lst->next->next->data);
-	ft_list_sort(&lst, ft_strcmp);
-	dprintf(1, "!!! LIST SORT !!!\n");
-	dprintf(1, "1m%s\n",lst->data);
-	dprintf(1, "2m%s\n",lst->next->data);
-	dprintf(1, "2m%s\n",lst->next->next->data);
-//	dprintf(1, "%p\n",lst);
-	//dprintf(1, "number of maillon = %d\n", ft_list_size(lst));
-	dprintf(1, "!!!!!   WRITE   !!!!!\n");
-	dprintf(1, "RET write = |%d|\n", i = write(fdwrite, "THIS IS BANANAS\n", 16));
-	dprintf(1, "RET write = |%d|\n", i = write(1, "THIS IS BANANAS\n", 16));
-	dprintf(1, "!!!!!   READ    !!!!!\n");
-	dprintf(1, "RET read = |%d|\n", i = ft_read(fdread, str, -1));
-	str[i] = '\0';
-	dprintf(1, "str is |%s|\n", str);
-	dprintf(1, "!!!!!  STRLEN   !!!!!\n");
-	dprintf(1, "str : %shas length = %zu\n", str, ft_strlen(str));
-	dprintf(1, "!!!!!  STRCMP   !!!!!\n");
-	dprintf(1, "cmp str & banana\\n :%d\n", ft_strcmp(str, str2));
-	dprintf(1, "!!!!!  STRDUP   !!!!!\n");
-	dprintf(1, "address of str = %p\n", str);
-	dprintf(1, "address of str duplicate = %p\n", str2 = ft_strdup(str));
-	dprintf(1, "str = %sstr2 = %s", str, str2);
+	// str3 = strdup("str");
+	// dprintf(1, "str3 : %s has length = %zu\n", str3, ft_strlen(str3));
+	// str2 = strdup("banana\n");
+	// dprintf(1, "str2 : %s has length = %zu\n", str2, ft_strlen(str2));
+	// ft_strcpy(str2, str3);
+	// dprintf(1, "STR3 : %s\n",str3);
+	// ft_list_push_front(&lst, (void *)str3);
+	// dprintf(1, "DATA : %s\n",lst->data);
+	// dprintf(1, "%p\n",lst);
+	// str3 = strdup("str1");
+	// ft_list_push_front(&lst, (void *)str3);
+	// dprintf(1, "DATA : %s\n",lst->data);
+	// dprintf(1, "%p\n",lst);
+	// str3 = strdup("str2");
+	// ft_list_push_front(&lst, (void *)str3);
+	// dprintf(1, "DATA : %s\n",lst->data);
+	// dprintf(1, "%p\n",lst);
+	// str3 = strdup("str3");
+	// ft_list_push_front(&lst, (void *)str3);
+	// dprintf(1, "DATA : %s\n",lst->data);
+	// dprintf(1, "%p\n",lst);
+	// str3 = strdup("str4");
+	// ft_list_push_front(&lst, (void *)str3);
+	// dprintf(1, "DATA : %s\n",lst->data);
+	// dprintf(1, "%p\n",lst);
+	// str3 = strdup("str5");
+	// ft_list_push_front(&lst, (void *)str3);
+	// dprintf(1, "DATA : %s\n",lst->data);
+	// dprintf(1, "%p\n",lst);
+	// dprintf(1, "number of maillon = %d\n", ft_list_size(lst));
+	// ft_list_sort(&lst, ft_strcmp);
+	// dprintf(1,"\nSort lst");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// ft_list_remove_if(&lst,	"str4", ft_strcmp, balec);
+	// dprintf(1,"\n\nRemove str4");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// ft_list_remove_if(&lst,	"str", ft_strcmp, balec);
+	// dprintf(1,"\n\nRemove str");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// ft_list_remove_if(&lst,	0, ft_strcmp, balec);
+	// dprintf(1,"\n\nRemove 0");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// ft_list_remove_if(&lst,	"ble", balec2, balec);
+	// dprintf(1,"\n\nRemove all");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// str3 = strdup("Surprise");
+	// ft_list_push_front(&lst, (void *)str3);
+	// ft_list_remove_if(&lst,	"str", ft_strcmp, balec);
+	// dprintf(1,"\n\nRemove str");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// ft_list_sort(&lst, ft_strcmp);
+	// dprintf(1,"\n\nRemove str");
+	// temp = lst;
+	// while (temp)
+	// {
+	// 	dprintf(1, "\n%s",temp->data);
+	// 	temp = temp->next;
+	// }
+	// dprintf(1, "!!!!!   WRITE   !!!!!\n");
+	// dprintf(1, "RET write = |%d|\n", i = write(fdwrite, "THIS IS BANANAS\n", 16));
+	// dprintf(1, "RET write = |%d|\n", i = write(1, "THIS IS BANANAS\n", 16));
+	// dprintf(1, "!!!!!   READ    !!!!!\n");
+	// str = malloc(sizeof(char) * 21);
+	// dprintf(1, "RET read = |%d|\n", i = ft_read(fdread, str, 16));
+	// str[i] = '\0';
+	// dprintf(1, "str is |%s|\n", str);
+	// dprintf(1, "!!!!!  STRLEN   !!!!!\n");
+	// dprintf(1, "str : %shas length = %zu\n", str, ft_strlen(str));
+	// dprintf(1, "!!!!!  STRCMP   !!!!!\n");
+	// dprintf(1, "cmp str & banana\\n :%d\n", ft_strcmp(str, str2));
+	// dprintf(1, "!!!!!  STRDUP   !!!!!\n");
+	// dprintf(1, "address of str = %p\n", str);
+	// dprintf(1, "address of str duplicate = %p\n", str2 = ft_strdup(str));
+	// dprintf(1, "str = %sstr2 = %s", str, str2);
 	printf("!!!!! ATOI_BASE !!!!!\n");
-	printf("%d\n", ft_atoi_base("-0", "0123456789"));
+	printf("%d\n", ft_atoi_base("-2", "0124"));
 	printf("%d\n", ft_atoi_base("-48", "0123456789"));
 	printf("%d\n", ft_atoi_base(" -+--2147448", "0123456789"));
 	printf("%d\n", ft_atoi_base("    ++---222", "012"));
@@ -83,8 +161,8 @@ int		main(void)
 	printf("%d\n", ft_atoi_base("ff", "0123456789abcdef"));
 	printf("%d\n", ft_atoi_base("ggg", "0123456789abcdefg"));
 
-	close(fdwrite);
-	close(fdread);
+	// close(fdwrite);
+	// close(fdread);
 	
 	return (0);
 }

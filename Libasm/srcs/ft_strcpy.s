@@ -1,3 +1,4 @@
+
 global _ft_strcpy
 
 section .text
@@ -16,5 +17,6 @@ _ft_strcpy:
 
 .exit:
 	mov rax, rdi
+	;mov rsp,rbp
 	pop rbp
 	ret

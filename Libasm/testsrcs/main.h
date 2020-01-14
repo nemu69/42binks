@@ -6,7 +6,7 @@
 /*   By: nepage-l <nepage-l@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/15 02:27:31 by jdesbord     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/05 20:24:35 by nepage-l    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/09 04:15:01 by nepage-l    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,5 +37,6 @@ void				ft_list_push_front(t_list **addr, void *data);
 void 				ft_list_sort(t_list **begin_list, int (*cmp)());
 t_list				*ft_create_elem(void *content);
 int					ft_list_size(t_list *begin_list);
+void				ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
 
 #endif
